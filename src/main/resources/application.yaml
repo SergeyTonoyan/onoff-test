@@ -12,3 +12,7 @@ spring:
     password: ''
   liquibase:
     change-log: classpath:db/master.xml
+  security:
+    user:
+      name: user
+      password: Password_123!
