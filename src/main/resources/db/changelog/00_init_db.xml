@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="create-call-log-table" author="sergei.tonoian">
+        <createTable tableName="CALL_LOG">
+            <column name="ID" type="VARCHAR(45)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="USER_ID" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="USERNAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ONOFF_NUMBER" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CONTACT_NUMBER" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="STATUS" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="INCOMING" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DURATION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="STARTED_AT" type="TIMESTAMP(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ENDED_AT" type="TIMESTAMP(3)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
