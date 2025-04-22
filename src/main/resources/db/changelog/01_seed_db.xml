@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="seed-call-log" author="sergei.tonoian" context="test-data">
+        <loadData
+                file="classpath:db/data/call_log_test_data.csv"
+                tableName="CALL_LOG"
+                separator=",">
+            <column header="ID"             name="ID"             type="STRING"/>
+            <column header="USER_ID"        name="USER_ID"        type="STRING"/>
+            <column header="USERNAME"       name="USERNAME"       type="STRING"/>
+            <column header="ONOFF_NUMBER"   name="ONOFF_NUMBER"   type="STRING"/>
+            <column header="CONTACT_NUMBER" name="CONTACT_NUMBER" type="STRING"/>
+            <column header="STATUS"         name="STATUS"         type="STRING"/>
+            <column header="INCOMING"       name="INCOMING"       type="BOOLEAN"/>
+            <column header="DURATION"       name="DURATION"       type="NUMERIC"/>
+            <column header="STARTED_AT"     name="STARTED_AT"     type="DATETIME"/>
+            <column header="ENDED_AT"       name="ENDED_AT"       type="DATETIME"/>
+        </loadData>
+    </changeSet>
+</databaseChangeLog>
