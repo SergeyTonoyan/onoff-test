@@ -39,4 +39,10 @@
             </column>
         </createTable>
     </changeSet>
+    <changeSet id="add-index-started-at-status" author="sergei.tonoian">
+        <createIndex indexName="idx_call_log_started_at_status" tableName="CALL_LOG">
+            <column name="STARTED_AT"/>
+            <column name="STATUS"/>
+        </createIndex>
+    </changeSet>
 </databaseChangeLog>
