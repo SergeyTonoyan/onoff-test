@@ -4,6 +4,7 @@ import com.example.onoff.domain.HourlyCallsProjection;
 import com.example.onoff.dto.HeatMapHourDto;
 import com.example.onoff.repository.CallLogRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -16,6 +17,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class CallLogService {
@@ -25,6 +27,7 @@ public class CallLogService {
     public List<HeatMapHourDto> getAnswerRate(LocalDate date, int numberOfShades, int startHour, int endHour) {
 
         if (endHour < startHour) {
+            log.error("Invalid hour range: end hour ({}) must be greater than or equal to start hour ({})", endHour, startHour);
             throw new IllegalArgumentException("End hour must be greater than or equal to start hour");
         }
         LocalDateTime start = date.atTime(startHour, 0);

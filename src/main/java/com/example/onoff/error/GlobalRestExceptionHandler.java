@@ -1,7 +1,6 @@
 package com.example.onoff.error;
 
 import jakarta.persistence.EntityNotFoundException;
-import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.ValidationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
@@ -78,7 +77,7 @@ public class GlobalRestExceptionHandler extends ResponseEntityExceptionHandler {
     @Override
     public ResponseEntity<Object> handleExceptionInternal(
             Exception ex, @Nullable Object body, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
-
+        log.error("Error in request {}: {}", request.getDescription(false), ex.getMessage(), ex);
         ErrorResponse errorResponse = ErrorResponse.builder()
                 .errorCode("error.genericError")
                 .status(status.value())
@@ -123,7 +122,8 @@ public class GlobalRestExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<Object> handleAllExceptions(Exception exception, WebRequest request) {
+    public ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request) {
+        log.error("Error in request {}: {}", request.getDescription(false), ex.getMessage(), ex);
         ErrorResponse errorResponse = ErrorResponse.builder()
                 .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
                 .message("Internal server error")
