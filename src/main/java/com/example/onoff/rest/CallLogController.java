@@ -1,6 +1,7 @@
 package com.example.onoff.rest;
 
 import com.example.onoff.dto.HeatMapHourDto;
+import com.example.onoff.service.CallLogService;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,8 @@ import java.util.List;
 @Validated
 public class CallLogController {
 
+    private final CallLogService callLogService;
+
     @GetMapping("/answer-rate")
     public List<HeatMapHourDto> getAnswerRate(
         @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateInput,
@@ -28,6 +31,6 @@ public class CallLogController {
         @RequestParam(defaultValue="0") @Min(0) @Max(23) int startHour,
         @RequestParam(defaultValue="23") @Min(0) @Max(23) int endHour
     ) {
-        return new ArrayList<>();
+        return this.callLogService.getAnswerRate(dateInput, numberOfShades, startHour, endHour);
     }
 }

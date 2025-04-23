@@ -14,6 +14,8 @@ import lombok.Setter;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -53,8 +55,8 @@ public class CallLog {
     private int duration;
 
     @Column(name = "STARTED_AT", columnDefinition="TIMESTAMP(3)", nullable = false)
-    private Instant startedAt;
+    private LocalDateTime startedAt;
 
     @Column(name = "ENDED_AT", columnDefinition="TIMESTAMP(3)", nullable = false)
-    private Instant endedAt;
+    private LocalDateTime endedAt;
 }
