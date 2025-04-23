@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <changeSet id="seed-call-log" author="sergei.tonoian" context="test-data">
+    <changeSet id="seed-call-log" author="sergei.tonoian" context="@test-data">
         <loadData
                 file="classpath:db/data/call_log_test_data.csv"
                 tableName="CALL_LOG"

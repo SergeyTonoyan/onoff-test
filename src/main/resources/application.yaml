@@ -6,7 +6,7 @@ spring:
       ddl-auto: none
     database-platform: org.hibernate.dialect.H2Dialect
   datasource:
-    url: jdbc:h2:mem:memdb
+    url: jdbc:h2:mem:memdb;DB_CLOSE_DELAY=0
     driverClassName: org.h2.Driver
     username: sa
     password: ''
